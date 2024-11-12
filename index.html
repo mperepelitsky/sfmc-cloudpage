@@ -1,27 +1,517 @@
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cloud page</title>
-</head>
-<body>
-  <h1>Hello gitpage</h1>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium omnis sequi animi minus, suscipit id, accusantium dicta reprehenderit vel est, ex voluptas quos. Asperiores impedit iusto quaerat nobis tempora cum.
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati reprehenderit nihil quasi atque modi, possimus quibusdam ratione exercitationem minima culpa, esse optio facilis. Maiores, in? Laborum excepturi inventore aut voluptatum!</p>
-  </p>
-  <ul>
-    <li>one</li>
-    <li>two</li>
-    <li>three</li>
-  </ul>
-  
-  insert test <lightning-carousel-image
-      src="https://www.lightningdesignsystem.com/assets/images/carousel/carousel-01.jpg"
-      header="Card"
-      description="Card description."
-      alternative-text="Card accessible description."
-      href="javascript:void(0);"
-  ></lightning-carousel-image>
-  <h3>Test</h3>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- USE TAILWIND FROM CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- HW COLOR THEME -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "hw-blue": "#2459a8",
+              "hw-lightblue": "#aed8ef",
+              "hw-darkblue": "#163565",
+              "hw-black": "#0d1438",
+              "hw-green": "#1a8927",
+              "hw-lightgreen": "#99c86b",
+              "hw-lightorange": "#fcb53b",
+              "hw-orange": "#f47f3a",
+              "hw-red": "#cc3333",
+              "hw-h1h2": "#102d7b",
+              "hw-divider": "#dbdbdb",
+              "hw-lightgray": "#f6f5f5",
+              "hw-hoverblue": "#80c4e9",
+            },
+            fontFamily: {
+              roboto: ["Roboto", "sans-serif"],
+              georgia: ["Georgia", "serif"],
+            },
+          },
+        },
+      };
+    </script>
+
+    <!-- HW THEME CUSTOM -->
+    <style type="text/tailwindcss">
+      @layer utilities {
+        .bg-hw-gradient-blue {
+          background: linear-gradient(to right, #2459a8 0%, #163565 100%);
+        }
+        .bg-hw-img1 {
+          background-image: url("https://www.hancockwhitney.com/hubfs/880058_0424_Q2Q3ConsumerProductChecking_blueswirl.jpg");
+        }
+      }
+      @layer base {
+        h1,
+        h2,
+        h3,
+        h4 {
+          color: #102d7b;
+          font-family: georgia, palatino;
+        }
+        h1 {
+          font-size: 54px;
+          line-height: 60px;
+        }
+        h2 {
+          font-size: 40px;
+          line-height: 1.3em;
+        }
+        h3 {
+          font-size: 32px;
+          line-height: 1em;
+        }
+        h4 {
+          font-size: 24px;
+          line-height: 1.3em;
+        }
+      }
+    </style>
+    <title>Tailwind Framework Cloud Page</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <header class="p-5 flex justify-between items-center bg-white">
+      <img
+        src="https://www.hancockwhitney.com/hs-fs/hubfs/HW-Logos/HW_SecondaryLogo_FullColor_RGB_CheckSite.png?width=125&height=35&name=HW_SecondaryLogo_FullColor_RGB_CheckSite.png"
+        alt="Hancock Whitney Logo"
+        class="h-10 object-contain"
+      />
+    </header>
+
+    <!-- creating hero banner with two columns , text left form on the right -->
+    <!-- Hero Banner -->
+    <div class="text-white bg-hw-gradient-blue">
+      <div class="p-4 sm:p-8 lg:p-10 pt-16 pb-8">
+        <div
+          class="flex flex-col lg:flex-row justify-between items-center max-w-7xl mx-auto"
+        >
+          <div class="w-full lg:w-1/2 mb-8 lg:mb-0">
+            <p class="text-lg font-bold text-hw-lightblue uppercase pb-5">
+              Savings Account Offer
+            </p>
+            <h2 class="text-5xl font-roboto text-white text-left pr-5">
+              Open a Freestyle Savings account and earn a $100 bonus<sup>1</sup>
+            </h2>
+          </div>
+          <div class="w-full lg:w-1/2">
+            <form action="" class="bg-white px-6 py-10 shadow-lg uppercase">
+              <p class="text-xl text-hw-black font-roboto mb-6">
+                Get your $100 bonus promo code
+              </p>
+              <div class="grid grid-cols-1 gap-6 sm:grid-cols-2">
+                <!-- First Name -->
+                <div>
+                  <label
+                    for="first-name"
+                    class="block text-sm font-medium text-hw-black"
+                  >
+                    First Name <span class="text-hw-red">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="first-name"
+                    id="first-name"
+                    autocomplete="given-name"
+                    class="mt-2 block w-full py-2 px-3 text-hw-black border border-gray-300 focus:border-green-500 focus:ring-0"
+                    aria-required="true"
+                  />
+                </div>
+                <!-- Last Name -->
+                <div>
+                  <label
+                    for="last-name"
+                    class="block text-sm font-medium text-hw-black"
+                  >
+                    Last Name <span class="text-hw-red">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="last-name"
+                    id="last-name"
+                    autocomplete="family-name"
+                    class="mt-2 block w-full py-2 px-3 text-hw-black border border-gray-300 shadow-sm focus:ring-hw-blue focus:border-hw-blue"
+                    aria-required="true"
+                  />
+                </div>
+                <!-- Email -->
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-hw-black"
+                  >
+                    Email <span class="text-hw-red">*</span>
+                  </label>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    autocomplete="email"
+                    class="mt-2 block w-full py-2 px-3 text-hw-black border border-gray-300 shadow-sm focus:ring-hw-blue focus:border-hw-blue"
+                    aria-required="true"
+                  />
+                </div>
+                <!-- Zip Code -->
+                <div>
+                  <label
+                    for="zipcode"
+                    class="block text-sm font-medium text-hw-black"
+                  >
+                    Zip Code <span class="text-hw-red">*</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="zipcode"
+                    id="zipcode"
+                    autocomplete="postal-code"
+                    class="mt-2 block w-full py-2 px-3 text-hw-black border border-gray-300 shadow-sm focus:ring-hw-blue focus:border-hw-blue"
+                    aria-required="true"
+                  />
+                </div>
+              </div>
+              >
+              <!-- Submit Button -->
+              <button
+                type="submit"
+                class="mt-5 px-4 py-3 font-medium text-sm border border-hw-darkblue border-solid text-hw-darkblue hover:bg-hw-blue hover:text-white transition-colors duration-200 ease-in-out"
+              >
+                Get my Promo Code
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Section with text and list on the right -->
+    <div class="mx-auto max-w-screen-xl py-20">
+      <div class="flex flex-wrap">
+        <div class="w-full lg:w-1/3 p-5">
+          <h2 class="text-3xl font-georgia mb-10">
+            Watch your money grow with Freestyle Savings
+          </h2>
+        </div>
+        <!-- list blocks-->
+        <div class="w-full lg:w-2/3 p-4">
+          <!-- BLOCK 1 -->
+          <div class="w-full mb-6 h-px bg-hw-divider p-0.25"></div>
+          <div class="flex items-start mb-6">
+            <div class="icon-con mr-4 w-15 flex-shrink-0">
+              <img
+                src="https://www.hancockwhitney.com/hubfs/2024_Ultra/2024_Ultra_Icons/Icon-Chart-1.svg"
+                alt="Icon-Chart-1"
+                class="w-12 min-w-12"
+              />
+            </div>
+            <div class="pl-6">
+              <h3
+                class="font-roboto text-2xl leading-10 font-light text-hw-black"
+              >
+                Earn high-yield rates from the start
+              </h3>
+              <p>
+                There's no minimum balance to earn interest. Start earning 2.50%
+                APY from your very first dollar deposited.
+              </p>
+            </div>
+          </div>
+          <!-- BLOCK 2 -->
+          <div class="w-full mb-6 h-px bg-hw-divider p-0.25"></div>
+          <div class="flex items-start mb-6">
+            <div class="icon-con mr-0 w-16 flex-shrink-0">
+              <img
+                src="https://www.hancockwhitney.com/hubfs/2024_Ultra/2024_Ultra_Icons/Icon-No%20Fees.svg"
+                alt="Icon-No Fees"
+                class="w-12 min-w-12"
+              />
+            </div>
+            <div class="pl-6 flex-grow">
+              <h3
+                class="font-roboto text-2xl leading-10 font-light text-hw-black"
+              >
+                Easily waive monthly fees
+              </h3>
+              <p>
+                Minimum Daily Collected Balance of at least $250.00; OR At least
+                ONE client-initiated debit or credit transaction per month; OR
+                client is under the age of 18 or age 64 and over.
+              </p>
+            </div>
+          </div>
+          <!-- BLOCK 3 -->
+          <div class="w-full mb-6 h-px bg-hw-divider p-0.25"></div>
+          <div class="flex items-start mb-6">
+            <div class="icon-con mr-0 w-16 flex-shrink-0">
+              <img
+                src="https://www.hancockwhitney.com/hubfs/2024_Ultra/2024_Ultra_Icons/Icon-Computer.svg"
+                alt="Icon-Computer"
+                class="w-12 min-w-12"
+              />
+            </div>
+            <div class="pl-6">
+              <h3
+                class="font-roboto text-2xl leading-10 font-light text-hw-black"
+              >
+                Digital tools to make banking easier
+              </h3>
+              <p>
+                Access your funds when you need them and track account growth
+                with online and mobile banking.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Block with header, three items and image on the right -->
+    <div class="mx-auto max-w-screen-xl">
+      <h2 class="text-4xl font-roboto mb-8 px-6">
+        Here's how to earn your $100 bonus:
+      </h2>
+      <div class="flex flex-wrap py-10">
+        <div class="w-full lg:w-1/2 p-0">
+          <div class="pl-2 pr-12">
+            <div>
+              <ol class="list-none pl-0 leading-snug">
+                <!-- Step 1 -->
+                <li class="relative flex items-start mb-6">
+                  <span class="text-6xl font-light text-hw-lightblue mr-4 px-4"
+                    >01</span
+                  >
+                  <div>
+                    <h3 class="font-roboto text-2xl font-light pb-2">
+                      Get Your Promo Code
+                    </h3>
+                    <p class="text-xl">
+                      Complete the form below. It will only take a few seconds,
+                      and who doesn't have a few extra seconds to earn $100?
+                    </p>
+                    <div class="w-full h-0.5 my-6 bg-hw-divider"></div>
+                  </div>
+                </li>
+
+                <!-- Step 2 -->
+                <li class="relative flex items-start mb-6">
+                  <span class="text-6xl font-light text-hw-lightblue mr-4 px-2"
+                    >02</span
+                  >
+                  <div>
+                    <h3 class="font-roboto text-2xl font-light pb-2">
+                      Open your Account
+                    </h3>
+                    <p class="text-xl">
+                      Open your account online or at any of our nearby
+                      <a href="/find-a-location" class="text-blue-600"
+                        >Financial Centers</a
+                      >
+                      by September 30, 2024. Your promo code must be included
+                      when your account is opened, and the email address must be
+                      the same one you entered on the form.
+                    </p>
+                    <div class="w-full h-0.5 my-6 bg-hw-divider"></div>
+                  </div>
+                </li>
+
+                <!-- Step 3 -->
+                <li class="relative flex items-start mb-6">
+                  <span class="text-6xl font-light text-hw-lightblue mr-4 px-2"
+                    >03</span
+                  >
+                  <div>
+                    <h3 class="font-roboto text-2xl font-light pb-2">
+                      Complete requirements for the offer
+                    </h3>
+                    <p class="text-xl">
+                      Deposit $15,000 or more by October 15, 2024 and maintain a
+                      minimum balance of $15,000 through January 31, 2025. If
+                      you complete the requirements, we'll add $100 to your
+                      Freestyle Savings account by January 31, 2025.
+                    </p>
+                    <div class="w-full h-0.5 my-6 bg-hw-divider"></div>
+                  </div>
+                </li>
+              </ol>
+              <!-- Learn More Section -->
+              <span class="text-xl"
+                >Want to explore more of our digital banking features?</span
+              >
+              <div class="mt-3">
+                <a
+                  href="#"
+                  class="uppercase text-blue-700 font-roboto text-base font-bold tracking-wide hover:text-blue-800 hover:underline"
+                  >Learn More</a
+                >
+              </div>
+            </div>
+            <!-- App Download Section -->
+            <div class="flex mt-6 pr-4">
+              <a href="#" class="pr-6">
+                <img
+                  src="https://1765103.fs1.hubspotusercontent-na1.net/hubfs/1765103/hub_generated/resized/6d9113d3-d05a-4fc9-9976-680cb8b09053.png"
+                  alt="Download on the App Store"
+                  class="border-0"
+                />
+              </a>
+              <a href="#">
+                <img
+                  src="https://1765103.fs1.hubspotusercontent-na1.net/hubfs/1765103/hub_generated/resized/ed406883-b93e-42e9-aa23-a269257cfd81.png"
+                  alt="Get It On Google Play"
+                  class="border-0"
+                />
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Image Section -->
+        <div class="w-full lg:w-1/2 text-center">
+          <img
+            src="https://www.hancockwhitney.com/hs-fs/hubfs/2024_Ultra/Ultra%20-%20Woman%20and%20Woman%20Shopping.jpg?width=829&height=620&name=Ultra%20-%20Woman%20and%20Woman%20Shopping.jpg"
+            alt="phone"
+            class="max-w-full h-auto"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Disclosure -->
+    <div class="max-w-screen-xl mx-auto text-sm m-2 px-4 pt-4 pb-20">
+      <p class="font-bold mb-4">
+        <sup>1</sup>Important details and required qualifying activities for the
+        Freestyle Savings bonus offer
+      </p>
+      <p class="mb-4">
+        Use the promo code referenced above when opening your new Freestyle
+        Savings account by the offer expiration date of 9/30/2024. You must
+        deposit $15,000 or more into your Freestyle Savings account by
+        10/15/2024. Your account must remain open and active and you must
+        maintain a minimum daily balance of $15,000 or more during the entire
+        promotional period which includes up to when the bonus is paid by
+        1/31/2025. If requirements are met, we will deposit the earned bonus
+        into your new Freestyle Savings account by 1/31/2025.
+      </p>
+      <p class="mb-4">
+        <span class="font-bold"
+          >Promotional requirements for the Freestyle Savings offer:</span
+        >
+        The email given at account opening must match the email address
+        submitted to get the offer promo code and the promo code is required to
+        be included in the account opening.
+      </p>
+      <p class="mb-4">
+        The bank may discontinue the offer at any time and without notice. This
+        offer is non-transferable and cannot be combined with other offers. Only
+        the person to whom this offer is addressed is eligible for this offer.
+        Limit of one consumer savings-related bonus per household every 2
+        calendar years. Bonuses may be considered interest and may be reported
+        on IRS Form 1099.
+      </p>
+      <p class="mb-4">
+        <span class="font-bold"
+          >Freestyle Savings Account Terms and Conditions:</span
+        >
+        $25 minimum opening deposit is required. Monthly service fee of $5 can
+        be waived by the following: primary account holder is under 18 or age 64
+        and over; or maintain a minimum daily balance of $250 or more; or make
+        one or more client-initiated debit or credit transactions per statement
+        cycle to waive the service charge. Three free withdrawals are allowed
+        each month, and additional withdrawals are $3 each. If your account is
+        closed within the first 180 days after opening, a $20 service charge
+        will be assessed and we reserve the right to deduct the bonus amount
+        from your account’s closing balance. Note that interest rate is variable
+        and subject to change at the Bank’s discretion. Fees may reduce earnings
+        on the account. Please refer to the Truth in Savings Disclosure for
+        other applicable fees and information.
+      </p>
+      <p class="mb-4">
+        APY (Annual Percentage Yield) is accurate as of 7/8/2024.
+      </p>
+      <div class="overflow-x-auto max-w-full mx-auto">
+        <table
+          class="border-collapse table-fixed w-full border border-hw-divider text-sm"
+        >
+          <tbody>
+            <tr>
+              <td class="w-1/3 text-center font-bold">
+                Minimum Collected Balance
+              </td>
+              <td class="w-1/3 text-center font-bold">Interest Rate</td>
+              <td class="w-1/3 text-center font-bold">
+                APY (Annual Percentage Yield)
+              </td>
+            </tr>
+            <tr>
+              <td class="w-1/3 text-left">$0.00 - $9,999.99</td>
+              <td class="w-1/3 text-center">2.48%</td>
+              <td class="w-1/3 text-center">2.50%</td>
+            </tr>
+            <tr>
+              <td class="w-1/3 text-left">$10,000.00 - $24,999.99</td>
+              <td class="w-1/3 text-center">2.72%</td>
+              <td class="w-1/3 text-center">2.75%</td>
+            </tr>
+            <tr>
+              <td class="w-1/3 text-left">$25,000.00 - $100,000.00</td>
+              <td class="w-1/3 text-center">2.97%</td>
+              <td class="w-1/3 text-center">3.00%</td>
+            </tr>
+            <tr>
+              <td class="w-1/3 text-left">$100,000.01+</td>
+              <td class="w-1/3 text-center">0.05%</td>
+              <td class="w-1/3 p-1 text-center">0.05%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="mt-4">
+        Hancock Whitney Bank, Member FDIC. All accounts subject to approval.
+        Terms and conditions apply.
+      </p>
+    </div>
+    <!-- Footer -->
+    <div class="text-black text-left py-6 mx-auto max-w-screen-xl">
+      <div class="w-full border-t border-gray-600 mb-6"></div>
+      <div class="flex flex-wrap mb-6 pl-4">
+        <div class="w-full sm:w-1/2 sm:order-last mb-4 sm:mb-0">
+          <nav
+            class="text-lg font-roboto text-hw-blue flex flex-col sm:flex-row space-y-2 sm:space-y-0 sm:space-x-4"
+            aria-label="Footer nav"
+          >
+            <a
+              href="https://www.hancockwhitney.com/privacy-policy"
+              class="text-sm hover:text-hw-darkblue hover:font-bold"
+              target="_self"
+              >Privacy</a
+            >
+            <a
+              href="https://www.hancockwhitney.com/legal-notices"
+              class="text-sm hover:text-hw-darkblue hover:font-bold"
+              target="_self"
+              >Legal</a
+            >
+            <a
+              href="https://www.hancockwhitney.com/"
+              class="text-sm hover:text-hw-darkblue hover:font-bold"
+              target="_self"
+              >hancockwhitney.com</a
+            >
+          </nav>
+          <p class="text-xs mt-4 pt-2 sm:mt-0">
+            © 2024 Hancock Whitney Bank<br />
+            Hancock Whitney and the Hancock Whitney logo are
+            federally-registered trademarks of Hancock Whitney Corporation.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
